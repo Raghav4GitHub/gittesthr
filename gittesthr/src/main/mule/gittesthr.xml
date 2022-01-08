@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="514ea82f-67e7-4ad6-8091-b302cb88c7fe" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="gittesthrFlow" doc:id="366aaa7b-0591-4da9-b333-586e03d17a2d" >
+		<http:listener doc:name="Listener" doc:id="e9462295-6b75-41d2-9d67-ed740bb24c46" config-ref="HTTP_Listener_config" path="/git"/>
+		<logger level="INFO" doc:name="Logger" doc:id="90b3e4a7-b9be-4e2e-abcf-21378dd448a4" message="Git Logging"/>
+		<set-payload value='#["Git Payload"]' doc:name="Set Payload" doc:id="409caf5d-7615-461d-a3d4-bc08401a98cb" />
+	</flow>
+</mule>
